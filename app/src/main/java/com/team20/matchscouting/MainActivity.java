@@ -1,5 +1,6 @@
 package com.team20.matchscouting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void nextButtonOnClick(View view){
-
+        Intent intent = new Intent(MainActivity.this,ScoutScreen.class);
+        startActivity(intent);
     }
 }
