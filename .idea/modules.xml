@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:\Users\Ben\Documents\GitHub\MatchScouting2018\MatchScouting2018.iml" filepath="C:\Users\Ben\Documents\GitHub\MatchScouting2018\MatchScouting2018.iml" />
+      <module fileurl="file://C:\Users\Ben\Documents\GitHub\MatchScouting2018\app\app.iml" filepath="C:\Users\Ben\Documents\GitHub\MatchScouting2018\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/MatchScouting2018.iml" filepath="$PROJECT_DIR$/MatchScouting2018.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
