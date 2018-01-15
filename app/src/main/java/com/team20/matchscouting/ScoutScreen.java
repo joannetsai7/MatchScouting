@@ -10,6 +10,7 @@ import android.os.Bundle;
 public class ScoutScreen extends Activity{
     @Override
     protected void onCreate(Bundle saveInstanceState){
+
         super.onCreate(saveInstanceState);
         setContentView(R.layout.scout_screen);
     }

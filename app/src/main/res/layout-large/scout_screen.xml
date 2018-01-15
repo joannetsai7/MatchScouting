@@ -25,27 +25,13 @@
             android:paddingTop="10dp"
             android:id="@+id/AutoLabel"/>
 
-        <!--Cross Auto Line Layout-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!--Cross Auto Line Label-->
-            <TextView
+         <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cross Auto Line:"
+                android:text="Cross Auto Line"
                 android:textSize="35dp"
-                android:paddingTop="20dp"
-                android:id="@+id/CrossAutoLineLabel"/>
-            <!--Cross Auto Line CheckBox-->
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="#8A8A8A"
                 android:id="@+id/CrossAutoLineCheckBox"/>
-
-        </LinearLayout>
 
         <!--Auto Switch Placed-->
         <LinearLayout
@@ -63,7 +49,7 @@
 
             <!--Space-->
             <Space
-                android:layout_width="30dp"
+                android:layout_width="134dp"
                 android:layout_height="wrap_content"/>
 
             <!--Auto Switch Minus Button-->
@@ -115,7 +101,7 @@
 
             <!--Space-->
             <Space
-                android:layout_width="49dp"
+                android:layout_width="153dp"
                 android:layout_height="wrap_content"/>
 
             <!--Auto Scale Minus Button-->
@@ -371,5 +357,36 @@
 
 
         </LinearLayout>
+        
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+        
+        <!--End Game Label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="END GAME"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+        <!--Park CheckBox-->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Park"
+            android:textSize="35dp"
+            android:textColor="#8A8A8A"
+            android:id="@+id/ParkCheckBox"/>
+
+        <!--Climb CheckBox-->
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Climb"
+            android:textSize="35dp"
+            android:textColor="#8A8A8A"
+            android:id="@+id/ClimbCheckBox"/>
+
     </LinearLayout>
 </ScrollView>
