@@ -388,5 +388,33 @@
             android:textColor="#8A8A8A"
             android:id="@+id/ClimbCheckBox"/>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <!--Comments Box-->
+        <EditText
+            android:id="@+id/commentText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Comments (Include Fouls)"
+            android:inputType="textCapSentences|textMultiLine|textFilter|textNoSuggestions"
+            android:maxLength="2000"
+            android:textSize="35dp"
+            android:maxLines="4"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        
+        <!--Submit Button-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:id="@+id/SubmitButton"/>
+
     </LinearLayout>
 </ScrollView>
