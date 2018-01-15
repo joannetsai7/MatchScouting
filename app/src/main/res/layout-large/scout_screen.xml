@@ -88,6 +88,10 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
         <!--Auto Scale Layout-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -207,6 +211,10 @@
                 android:onClick="Add"/>
         </LinearLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
         <!--Offensive Switch Layout-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -261,6 +269,10 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
         <!--Oppt. Switch Layout-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -314,6 +326,10 @@
                 android:onClick="Add"/>
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
 
         <!--Scale Layout-->
         <LinearLayout
