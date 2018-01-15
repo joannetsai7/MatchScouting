@@ -9,102 +9,367 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:orientation="vertical">
 
-        <!--Left Margin-->
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3" />
+        <!--Auto Label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="AUTO"
+            android:textSize="40dp"
+            android:paddingTop="10dp"
+            android:id="@+id/AutoLabel"/>
 
-        <!--Content-->
+        <!--Cross Auto Line Layout-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight=".4"
-            android:weightSum="1">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <!--Labels-->
-            <LinearLayout
-                android:orientation="vertical"
+            <!--Cross Auto Line Label-->
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:weightSum="10"
-                android:layout_weight="0.05">
-
-                <!--Top Sapcer-->
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="30px"
-                    android:layout_weight="0.04" />
-
-                <!--Auto Label-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AUTO"
-                    android:textSize="30dp"
-                    android:id="@+id/AutoLabel"
-                    android:layout_weight="0.25"/>
-
-                <!--Cross Autoline Label-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Cross Autoline"
-                    android:textSize="20dp"
-                    android:id="@+id/CrossAutolineLabel"
-                    android:layout_weight="0.25"/>
-
-                <!--Switch Label-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Stitch"
-                    android:textSize="20dp"
-                    android:id="@+id/SwitchLabel"
-                    android:layout_weight="0.25"/>
-
-                <!--Scale Label-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Scale"
-                    android:textSize="20dp"
-                    android:id="@+id/ScaleLabel"
-                    android:layout_weight="0.25"/>
-
-            </LinearLayout>
-
-            <!--Answers-->
-            <LinearLayout
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:text="Cross Auto Line:"
+                android:textSize="35dp"
+                android:paddingTop="20dp"
+                android:id="@+id/CrossAutoLineLabel"/>
+            <!--Cross Auto Line CheckBox-->
+            <CheckBox
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:id="@+id/CrossAutoLineCheckBox"/>
 
-                <!--Top Space-->
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="25px" />
+        </LinearLayout>
 
-                <!--Cross Autoline CheckBox-->
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/CrossAutolineCheckBox"/>
+        <!--Auto Switch Placed-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <!--Switch LinearLayout-->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+            <!--Auto Switch Placed Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed On Switch:"
+                android:textSize="35dp"
+                android:paddingTop="20dp"
+                android:id="@+id/AutoSwitchLabel"/>
 
-                    <!--Minus Button-->
-                </LinearLayout>
+            <!--Space-->
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"/>
 
-            </LinearLayout>
+            <!--Auto Switch Minus Button-->
+            <Button
+                android:text="-"
+                android:layout_width="92dp"
+                android:layout_height="60dp"
+                android:id="@+id/AutoSwitchMinusButton"
+                android:textSize="35dp"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <!--Auto Switch Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/AutoSwitchTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <!--Auto Switch Plus Button-->
+            <Button
+                android:layout_width="92dp"
+                android:layout_height="60dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/AutoSwitchPlusButton"/>
+
+        </LinearLayout>
+
+        <!--Auto Scale Layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!--Auto Scale Placed Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed On Scale:"
+                android:textSize="35dp"
+                android:id="@+id/AutoScaleLabel"/>
+
+            <!--Space-->
+            <Space
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"/>
+
+            <!--Auto Scale Minus Button-->
+            <Button
+                android:text="-"
+                android:layout_width="92dp"
+                android:layout_height="60dp"
+                android:id="@+id/AutoScaleMinusButton"
+                android:textSize="35dp"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <!--Auto Scale Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/AutoScaleTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <!--Auto Scale Plus Button-->
+            <Button
+                android:layout_width="92dp"
+                android:layout_height="60dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/AutoScalePlusButton"/>
+
+        </LinearLayout>
+        
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <!--Teleop Label-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TELEOP"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+        <!--Teleop Exchange Zone Layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Exchange Zone Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed Into Exchange:"
+                android:textSize="35dp"
+                android:id="@+id/ExchangeZoneLabel"/>
+
+            <Space
+                android:layout_width="71dp"
+                android:layout_height="wrap_content" />
+
+            <!--Exchange Zone Minus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="-"
+                android:textSize="35dp"
+                android:id="@+id/ExchangeZoneMinusButton"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Exchange Zone Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/ExchangeZoneTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Exchange Zone Plus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/ExchangeZonePlusButton"/>
+        </LinearLayout>
+
+        <!--Offensive Switch Layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--OSwitch Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed On Own Switch:"
+                android:textSize="35dp"
+                android:id="@+id/OSwitchLabel"/>
+
+            <Space
+                android:layout_width="55dp"
+                android:layout_height="wrap_content" />
+
+            <!--OSwitch Minus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="-"
+                android:textSize="35dp"
+                android:id="@+id/OSwitchMinusButton"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <!--OSwitch Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/OSwitchTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--OSwitch Plus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/OSwitchPlusButton"/>
+
+        </LinearLayout>
+
+        <!--Oppt. Switch Layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Oppt. Switch Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed On Oppt. Switch:"
+                android:textSize="35dp"
+                android:id="@+id/OpptSwitchLabel"/>
+
+            <Space
+                android:layout_width="41dp"
+                android:layout_height="wrap_content" />
+
+            <!--Oppt. Switch Minus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="-"
+                android:textSize="35dp"
+                android:id="@+id/OpptSwitchMinusButton"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Oppt. Switch Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/OpptSwitchTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Oppt. Switch Plus Label-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/OpptSwitchPlusLabel"/>
+
+        </LinearLayout>
+
+        <!--Scale Layout-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Scale Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Placed On Scale:"
+                android:textSize="35dp"
+                android:id="@+id/ScaleLabel"/>
+
+            <Space
+                android:layout_width="154dp"
+                android:layout_height="wrap_content" />
+
+            <!--Scale Minus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="-"
+                android:textSize="35dp"
+                android:id="@+id/ScaleMinusButton"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Scale Text Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:id="@+id/ScaleTextLabel"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <!--Scale Plus Button-->
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="62dp"
+                android:text="+"
+                android:textSize="35dp"
+                android:id="@+id/ScalePlusButton"/>
+
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
