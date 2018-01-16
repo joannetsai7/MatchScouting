@@ -176,8 +176,6 @@
                 android:layout_weight="1"
                 android:weightSum="1">
 
-
-
                 <!--Keeps the button on the bottom-->
                 <View
                     android:layout_width="match_parent"
