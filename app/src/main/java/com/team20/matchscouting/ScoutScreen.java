@@ -1,22 +1,160 @@
 package com.team20.matchscouting;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Ben on 1/7/2018.
  */
 
 public class ScoutScreen extends Activity{
+    //Expandable List
+    private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHolder = new ArrayList<>();
+    private HashMap<String,List<String>> listHash = new HashMap<>();;
+    private List<String> park = new ArrayList<>();
+    private List<String> climb = new ArrayList<>();
+
+    //Data points
+    private static Data data = new Data();
+    private String firstName = "";
+    private String lastName = "";
+    private String alliance = "";
+    private String match = "";
+    private String teamNumber = "";
+    private String replay = "";
+    private String parkChosen = "";
+    private String climbChosen = "";
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
-
         super.onCreate(saveInstanceState);
         setContentView(R.layout.scout_screen);
+
+        System.err.println("STARTED SCOUT");
+
+        //Info from previous screen
+        firstName = getIntent().getStringExtra("First_Name");
+        lastName = getIntent().getStringExtra("Last_Name");
+        match = getIntent().getStringExtra("Match_Number");
+//        alliance =  getIntent().getStringExtra("");
+        teamNumber = getIntent().getStringExtra("Team_Number");
+        replay = getIntent().getStringExtra("Replay_Match");
+
+        listView = (ExpandableListView)findViewById(R.id.lvExp);
+        initData();
+        listAdapter = new ExpandableListAdapter(this,listDataHolder,listHash);
+        listView.setAdapter(listAdapter);
+
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                setListViewHeight(parent, groupPosition);
+                return false;
+            }
+        });
+
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String name = "";
+                if (groupPosition == 0){
+                    String parkChild = park.get(childPosition); //Park chosen
+                    parkChosen = parkChild;
+                    name = "Park: " + parkChild;
+                } else if (groupPosition == 1) {
+                    String climbChild = climb.get(childPosition); //Climb chosen
+                    climbChosen = climbChild;
+                    name = "Climb: " + climbChild;
+                }
+                listDataHolder.set(groupPosition, name);
+                reassign();
+                Toast.makeText(getApplicationContext(), listDataHolder.get(groupPosition), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View view = getCurrentFocus();
+        if (view != null && (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) && view instanceof EditText && !view.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            view.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + view.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + view.getTop() - scrcoords[1];
+            if (x < view.getLeft() || x > view.getRight() || y < view.getTop() || y > view.getBottom())
+                ((InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((this.getWindow().getDecorView().getApplicationWindowToken()), 0);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private void initData(){
+        listDataHolder.add("Park");
+        park.add("Successful");
+        park.add("Failed");
+        park.add("Did not Attempt");
+
+        listDataHolder.add("Climb");
+        climb.add("Successful (was helped)");
+        climb.add("Successful (was NOT helped)");
+        climb.add("Failed (was helped)");
+        climb.add("Failed (was NOT helped)");
+        climb.add("Did not Attempt");
+        reassign();
+    }
+
+    private void reassign(){
+        listHash.put(listDataHolder.get(0),park);
+        listHash.put(listDataHolder.get(1),climb);
+    }
+
+    private void setListViewHeight(ExpandableListView listView, int group) {
+        ExpandableListAdapter listAdapter = (ExpandableListAdapter) listView.getExpandableListAdapter();
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.EXACTLY);
+        for (int i = 0; i < listAdapter.getGroupCount(); i++) {
+            View groupItem = listAdapter.getGroupView(i, false, null, listView);
+            groupItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+            totalHeight += groupItem.getMeasuredHeight();
+
+            if (((listView.isGroupExpanded(i)) && (i != group)) || ((!listView.isGroupExpanded(i)) && (i == group))) {
+                for (int j = 0; j < listAdapter.getChildrenCount(i); j++) {
+                    View listItem = listAdapter.getChildView(i, j, false, null, listView);
+                    listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+
+                    totalHeight += listItem.getMeasuredHeight();
+
+                }
+            }
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        int height = totalHeight + (listView.getDividerHeight() * (listAdapter.getGroupCount() - 1));
+        if (height < 10) {
+            height = 200;
+        }
+        params.height = height;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 
     public void subtract(View view){
@@ -126,7 +264,9 @@ public class ScoutScreen extends Activity{
         shortOutput += teleOpScale;
         fullOutput += teleOpScale;
 
+        //Parking
 
+        //Climbing
     }
 
     /*

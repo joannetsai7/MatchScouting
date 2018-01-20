@@ -397,40 +397,11 @@
             android:text="END GAME"
             android:textSize="40dp"
             android:textStyle="bold"/>
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/endGame">
-            <RadioButton
-                android:layout_width="wrap_content"
+            <ExpandableListView
+                android:id="@+id/lvExp"
                 android:layout_height="wrap_content"
-                android:text="Park (Didn't attempt to climb)"
-                android:textSize="25dp"
-                android:id="@+id/park" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Successful Climb"
-                android:textSize="25dp"
-                android:id="@+id/climb" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Failed Climb"
-                android:textSize="25dp"
-                android:id="@+id/failClimb" />
-        </RadioGroup>
-
-        <!--Aided Climb CheckBox-->
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aided Climb"
-            android:textSize="25dp"
-            android:id="@+id/aidClimb"/>
+                android:layout_width="match_parent">
+            </ExpandableListView>
 
         <Space
             android:layout_width="wrap_content"

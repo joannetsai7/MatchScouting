@@ -41,7 +41,7 @@
                     android:weightSum="1"
                     android:layout_weight="0.05">
 
-                    <!--Top Sapcer-->
+                    <!--Top Spacer-->
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="30px"
@@ -134,7 +134,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/editMatch"
+                        android:id="@+id/editMatchNumber"
                         android:hint="Match Number"
                         android:textSize= "20dp"
                         android:inputType="number"
@@ -189,7 +189,7 @@
                     android:text="Next"
                     android:id="@+id/nextButton"
                     android:layout_gravity="bottom|right"
-                    android:onClick="nextButtonOnClick"/>
+                    android:onClick="next"/>
 
             </LinearLayout>
         </LinearLayout>
