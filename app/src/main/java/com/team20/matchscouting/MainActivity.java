@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void next(View view) {
-        System.err.println("SUBMITTING");
         Intent intent = new Intent(MainActivity.this, ScoutScreen.class);
 
         EditText editFirst = (EditText) findViewById(R.id.editFirstName);
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity{
                         replay += checkBox(replayBox, replay);
                         intent.putExtra("Replay_Match", replay);
 
-                        System.err.println("STARTING");
                         startActivity(intent);
                     } else {
                         System.err.println("Team Number is not entered");

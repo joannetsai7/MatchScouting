@@ -54,7 +54,7 @@
                         android:text="First Name: "
                         android:textSize= "20dp"
                         android:id="@+id/firstName"
-                        android:layout_weight="0.25" />
+                        android:layout_weight="0.24" />
 
                     <!--Last Name Label-->
                     <TextView
@@ -63,35 +63,25 @@
                         android:text="Last Name: "
                         android:textSize= "20dp"
                         android:id="@+id/lastName"
-                        android:layout_weight="0.25" />
+                        android:layout_weight="0.24" />
 
-                    <!--Team Scouted Label-->
+                    <!--Match Number Label-->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Match Number: "
                         android:textSize= "20dp"
                         android:id="@+id/match"
-                        android:layout_weight="0.25" />
+                        android:layout_weight="0.24" />
 
+                    <!--Team Number Label-->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Team Number:"
                         android:textSize="20dp"
                         android:id="@+id/team"
-                        android:layout_weight="0.25"/>
-
-                    <!--Replay Label-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Replay: "
-                        android:textSize="20dp"
-                        android:id="@+id/replay"
-                        android:layout_weight="0.25"/>
-
-
+                        android:layout_weight="0.24"/>
                 </LinearLayout>
 
                 <!--Answers-->
@@ -157,7 +147,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/editReplay"
-                        android:layout_weight="0.03"/>
+                        android:layout_weight="0.03"
+                        android:text="Replay"
+                        android:textSize="20dp"/>
+
                     <!--Side Margin-->
                     <Space
                         android:layout_width="match_parent"
@@ -191,6 +184,9 @@
                     android:layout_gravity="bottom|right"
                     android:onClick="next"/>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
             </LinearLayout>
         </LinearLayout>
 
