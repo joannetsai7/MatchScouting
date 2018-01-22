@@ -7,197 +7,64 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <!--Left Margin-->
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3" />
-
-        <!--Content-->
+        <!--First Name Layout-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight=".4"
-            android:weightSum="1">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <!--Top Section-->
-            <LinearLayout
+            <!--First Name Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name:"
+                android:textSize="35dp"
+                android:id="@+id/FirstNameLabel"/>
+
+            <Space
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+
+            <!--First Name EditText-->
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:hint="Enter First Name"
+                android:id="@+id/editFirstName"/>
 
-                <!--Labels-->
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:weightSum="1"
-                    android:layout_weight="0.05">
-
-                    <!--Top Sapcer-->
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="30px"
-                        android:layout_weight="0.04" />
-
-                    <!--First Name Label-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="First Name: "
-                        android:textSize= "20dp"
-                        android:id="@+id/firstName"
-                        android:layout_weight="0.25" />
-
-                    <!--Last Name Label-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Last Name: "
-                        android:textSize= "20dp"
-                        android:id="@+id/lastName"
-                        android:layout_weight="0.25" />
-
-                    <!--Team Scouted Label-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Match Number: "
-                        android:textSize= "20dp"
-                        android:id="@+id/match"
-                        android:layout_weight="0.25" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Team Number:"
-                        android:textSize="20dp"
-                        android:id="@+id/team"
-                        android:layout_weight="0.25"/>
-
-                    <!--Replay Label-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Replay: "
-                        android:textSize="20dp"
-                        android:id="@+id/replay"
-                        android:layout_weight="0.25"/>
-
-
-                </LinearLayout>
-
-                <!--Answers-->
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:weightSum="1"
-                    android:layout_weight="0.8">
-
-                    <!--Top Margin-->
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="25px"
-                        android:layout_weight="0.025" />
-
-                    <!--First Name Textbox-->
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editFirstName"
-                        android:hint="Enter First Name"
-                        android:textSize= "20dp"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
-
-                    <!--Last Name Textbox-->
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editLastName"
-                        android:hint="Enter Last Name"
-                        android:textSize= "20dp"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
-
-                    <!--Match Number Textbox-->
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editMatch"
-                        android:hint="Match Number"
-                        android:textSize= "20dp"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:layout_weight="0.03" />
-
-                    <!--Team Scouted Textbox-->
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editTeam"
-                        android:hint="Team Number"
-                        android:textSize="20dp"
-                        android:inputType="number"
-                        android:singleLine="true"
-                        android:layout_weight="0.03"/>
-
-                    <!--Replay CheckBox-->
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/editReplay"
-                        android:layout_weight="0.03"/>
-                    <!--Side Margin-->
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="25px"
-                        android:layout_weight="0.020" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!--Bottom Section-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:weightSum="1">
-
-                <!--Keeps the button on the bottom-->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <!--Next Button-->
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Next"
-                    android:id="@+id/nextButton"
-                    android:layout_gravity="bottom|right"
-                    android:onClick="nextButtonOnClick"/>
-
-            </LinearLayout>
         </LinearLayout>
 
-        <!--Right Margin-->
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3" />
+        <!--Last Name Layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Last Name Label-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name:"
+                android:textSize="35dp"
+                android:id="@+id/LastNameLabel"/>
+
+            <Space
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+
+            <!--Last Name EditText-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Last Name:"
+                android:id="@+id/editLastName"/>
+
+        </LinearLayout>
+
     </LinearLayout>
+
 </ScrollView>
