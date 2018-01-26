@@ -239,7 +239,7 @@ public class ScoutScreen extends Activity{
             String crossAuto = "";
             CheckBox autoLine = (CheckBox) findViewById(R.id.autoLine);
             crossAuto += checkBox(autoLine, crossAuto);
-            shortOutput += "\t" + crossAuto;
+            shortOutput += "\t" + "crossed";
 
             //Cubes scored in Switch in Auto
             String autoSwitch = ((TextView) findViewById(R.id.AutoSwitchTextLabel)).getText().toString();
@@ -248,6 +248,12 @@ public class ScoutScreen extends Activity{
             //Cubes scored in Scale in Auto
             String autoScale = ((TextView) findViewById(R.id.AutoScaleTextLabel)).getText().toString();
             shortOutput += "\t" + autoScale;
+
+            //Cubes placed on wrong side of switch/scale
+            String wrongSide = "";
+            CheckBox wrongSideBox = (CheckBox) findViewById(R.id.wrongSide);
+            wrongSide += checkBox(wrongSideBox, wrongSide);
+            shortOutput += "\t" + "wrong";
 
             //Cubes placed in Exchange in TeleOp
             String teleOpExchange = ((TextView) findViewById(R.id.ExchangeZoneTextLabel)).getText().toString();

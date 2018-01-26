@@ -74,7 +74,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cross Auto Line"
+                    android:text="Crossed Auto Line"
                     android:textSize="35dp"
                     android:id="@+id/autoLine"/>
             </LinearLayout>
@@ -201,6 +201,13 @@
                 android:onClick="add"/>
 
         </LinearLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placed Cube(s) on wrong side of Switch/Scale"
+            android:textSize="35dp"
+            android:id="@+id/wrongSide"/>
         
         <Space
             android:layout_width="match_parent"
