@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class ScoutScreen extends Activity{
         firstName = getIntent().getStringExtra("First_Name");
         lastName = getIntent().getStringExtra("Last_Name");
         match = getIntent().getStringExtra("Match_Number");
-//        alliance =  getIntent().getStringExtra("");
+        alliance =  getIntent().getStringExtra("Alliance_Color");
         teamNumber = getIntent().getStringExtra("Team_Number");
         replay = getIntent().getStringExtra("Replay_Match");
 
@@ -227,91 +228,102 @@ public class ScoutScreen extends Activity{
 
         shortOutput += alliance + "\t" + match + replay + "\t" + teamNumber;
 
-        //Cross Auto Line
-        String crossAuto = "";
-        CheckBox autoLine = (CheckBox) findViewById(R.id.autoLine);
-        crossAuto += checkBox(autoLine, crossAuto);
-        shortOutput += "\t" + crossAuto;
+        //Starting Position
+        RadioGroup startPos = (RadioGroup) findViewById(R.id.startPosition);
+        int startPosID = startPos.getCheckedRadioButtonId();
+        String startPosition = radioButton(startPosID);
+        if (!startPosition.equals("")) {
+            shortOutput += "\t" + startPosition;
 
-        //Cubes scored in Switch in Auto
-        String autoSwitch = ((TextView) findViewById(R.id.AutoSwitchTextLabel)).getText().toString();
-        shortOutput += "\t" + autoSwitch;
+            //Cross Auto Line
+            String crossAuto = "";
+            CheckBox autoLine = (CheckBox) findViewById(R.id.autoLine);
+            crossAuto += checkBox(autoLine, crossAuto);
+            shortOutput += "\t" + crossAuto;
 
-        //Cubes scored in Scale in Auto
-        String autoScale = ((TextView) findViewById(R.id.AutoScaleTextLabel)).getText().toString();
-        shortOutput += "\t" + autoScale;
+            //Cubes scored in Switch in Auto
+            String autoSwitch = ((TextView) findViewById(R.id.AutoSwitchTextLabel)).getText().toString();
+            shortOutput += "\t" + autoSwitch;
 
-        //Cubes placed in Exchange in TeleOp
-        String teleOpExchange = ((TextView) findViewById(R.id.ExchangeZoneTextLabel)).getText().toString();
-        shortOutput += "\t" + teleOpExchange;
+            //Cubes scored in Scale in Auto
+            String autoScale = ((TextView) findViewById(R.id.AutoScaleTextLabel)).getText().toString();
+            shortOutput += "\t" + autoScale;
 
-        //Cubes scored in own Switch in TeleOp
-        String teleOpOwnSwitch = ((TextView) findViewById(R.id.OSwitchTextLabel)).getText().toString();
-        shortOutput += "\t" + teleOpOwnSwitch;
+            //Cubes placed in Exchange in TeleOp
+            String teleOpExchange = ((TextView) findViewById(R.id.ExchangeZoneTextLabel)).getText().toString();
+            shortOutput += "\t" + teleOpExchange;
 
-        //Cubes scored in opponent Switch in TeleOp
-        String teleOpOpptSwitch = ((TextView) findViewById(R.id.OpptSwitchTextLabel)).getText().toString();
-        shortOutput += "\t" + teleOpOpptSwitch;
+            //Cubes scored in own Switch in TeleOp
+            String teleOpOwnSwitch = ((TextView) findViewById(R.id.OSwitchTextLabel)).getText().toString();
+            shortOutput += "\t" + teleOpOwnSwitch;
 
-        //Cubes scored in Scale in TeleOp
-        String teleOpScale = ((TextView) findViewById(R.id.ScaleTextLabel)).getText().toString();
-        shortOutput += "\t" + teleOpScale;
+            //Cubes scored in opponent Switch in TeleOp
+            String teleOpOpptSwitch = ((TextView) findViewById(R.id.OpptSwitchTextLabel)).getText().toString();
+            shortOutput += "\t" + teleOpOpptSwitch;
 
-        //Parking
-        if (!parkChosen.equals("")){
-            shortOutput += "\t" + parkChosen;
+            //Cubes scored in Scale in TeleOp
+            String teleOpScale = ((TextView) findViewById(R.id.ScaleTextLabel)).getText().toString();
+            shortOutput += "\t" + teleOpScale;
 
-            //Climbing
-            if (!climbChosen.equals("")){
-                shortOutput += "\t" + climbChosen;
+            //Parking
+            if (!parkChosen.equals("")) {
+                shortOutput += "\t" + parkChosen;
 
-                EditText editSuccess = (EditText) findViewById(R.id.editSuccessfulAid);
-                String successAid = editSuccess.getText().toString();
-                if (!successAid.equals("")){
-                    int successNum = Integer.parseInt(successAid);
-                    if (successNum < 3){
-                        shortOutput += "\t" + successNum;
+                //Climbing
+                if (!climbChosen.equals("")) {
+                    shortOutput += "\t" + climbChosen;
 
-                        EditText editFail = (EditText)  findViewById(R.id.editFailedAid);
-                        String failAid = editFail.getText().toString();
-                        if (!failAid.equals("")){
-                            int failNum = Integer.parseInt(failAid);
-                            if (failNum < 3){
-                                shortOutput += "\t" + failNum;
+                    EditText editSuccess = (EditText) findViewById(R.id.editSuccessfulAid);
+                    String successAid = editSuccess.getText().toString();
+                    if (!successAid.equals("")) {
+                        int successNum = Integer.parseInt(successAid);
+                        if (successNum < 3) {
+                            shortOutput += "\t" + successNum;
 
-                                EditText editComments = (EditText) findViewById(R.id.commentText);
-                                String comments = editComments.getText().toString();
-                                if (comments.equals("")){
-                                    shortOutput += "\t" + comments;
+                            EditText editFail = (EditText) findViewById(R.id.editFailedAid);
+                            String failAid = editFail.getText().toString();
+                            if (!failAid.equals("")) {
+                                int failNum = Integer.parseInt(failAid);
+                                if (failNum < 3) {
+                                    shortOutput += "\t" + failNum;
+
+                                    EditText editComments = (EditText) findViewById(R.id.commentText);
+                                    String comments = editComments.getText().toString();
+                                    if (comments.equals("")) {
+                                        shortOutput += "\t" + comments;
+                                    } else {
+                                        shortOutput += "\tN/A";
+                                    }
+
+                                    fullOutput += firstName + "/t" + lastName + "/t" + shortOutput;
+                                    data.save(shortOutput, fullOutput);
                                 } else {
-                                    shortOutput += "\tN/A";
+                                    System.err.println("Number of failed aided climb attempts is too high");
+                                    Toast.makeText(getApplicationContext(), "Number of failed aided climb attempts is too high", Toast.LENGTH_SHORT).show();
                                 }
-
-                                fullOutput += firstName + "/t" + lastName + "/t" + shortOutput;
-                                data.save(shortOutput, fullOutput);
                             } else {
-                                System.err.println("Number of failed aided climb attempts is too high");
-                                Toast.makeText(getApplicationContext(), "Number of failed aided climb attempts is too high", Toast.LENGTH_SHORT).show();
+                                System.err.println("Failed aided climb attempts is empty");
+                                Toast.makeText(getApplicationContext(), "Failed aided climb attempts is empty", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            System.err.println("Failed aided climb attempts is empty");
-                            Toast.makeText(getApplicationContext(), "Failed aided climb attempts is empty", Toast.LENGTH_SHORT).show();
+                            System.err.println("Number of successful aided climb attempts is too high");
+                            Toast.makeText(getApplicationContext(), "Number of successful aided climb attempts is too high", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        System.err.println("Number of successful aided climb attempts is too high");
-                        Toast.makeText(getApplicationContext(), "Number of successful aided climb attempts is too high", Toast.LENGTH_SHORT).show();
+                        System.err.println("Successful aided climb attempts is empty");
+                        Toast.makeText(getApplicationContext(), "Successful aided climb attempts is empty", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    System.err.println("Successful aided climb attempts is empty");
-                    Toast.makeText(getApplicationContext(), "Successful aided climb attempts is empty", Toast.LENGTH_SHORT).show();
+                    System.err.println("Climbing is not selected");
+                    Toast.makeText(getApplicationContext(), "Climbing is not selected", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                System.err.println("Climbing is not selected");
-                Toast.makeText(getApplicationContext(), "Climbing is not selected", Toast.LENGTH_SHORT).show();
+                System.err.println("Parking is not selected");
+                Toast.makeText(getApplicationContext(), "Parking is not selected", Toast.LENGTH_SHORT).show();
             }
         } else {
-            System.err.println("Parking is not selected");
-            Toast.makeText(getApplicationContext(), "Parking is not selected", Toast.LENGTH_SHORT).show();
+            System.err.println("Starting Position is not selected");
+            Toast.makeText(getApplicationContext(), "Starting Position is not selected", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -323,6 +335,7 @@ public class ScoutScreen extends Activity{
     How to use:
     RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
     int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
+    String floorFuelAbility = radioButton(floorFuelCollectID);
     */
     public String radioButton(int selectedRadioButtonID){
         if (selectedRadioButtonID != -1){

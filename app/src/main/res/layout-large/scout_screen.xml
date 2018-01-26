@@ -15,23 +15,79 @@
         android:paddingTop="16dp"
         android:orientation="vertical">
 
-        <!--Auto Label-->
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="AUTO"
-            android:textSize="40dp"
-            android:paddingTop="10dp"
-            android:id="@+id/AutoLabel"/>
+            android:orientation="horizontal">
 
-            <CheckBox
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <!--Auto Label-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="AUTO"
+                    android:textSize="40dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/AutoLabel"/>
+                <!--Starting Positions-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Starting Positions: "
+                    android:textSize="35dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/startPosition">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30dp"
+                        android:id="@+id/auto1"
+                        android:text="1"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30dp"
+                        android:id="@+id/auto2"
+                        android:text="2"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30dp"
+                        android:id="@+id/auto3"
+                        android:text="3"/>
+                </RadioGroup>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+                <!--android:textColor="#a9a9a9"-->
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cross Auto Line"
+                    android:textSize="35dp"
+                    android:id="@+id/autoLine"/>
+            </LinearLayout>
+
+            <!--Autonomous Positions Diagram-->
+            <ImageView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cross Auto Line"
-                android:textSize="35dp"
-                android:textColor="#a9a9a9"
-                android:id="@+id/autoLine"/>
+                android:id="@+id/field"
+                android:src="@drawable/field"
+                android:adjustViewBounds="true"
+                android:layout_weight="150"/>
+        </LinearLayout>
 
         <!--Auto Switch Placed-->
         <LinearLayout

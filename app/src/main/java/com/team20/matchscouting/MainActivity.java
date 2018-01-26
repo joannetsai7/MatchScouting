@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.EditText;
-=======
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
->>>>>>> fab7f0ebdddedf68d8885b5561f0ee19cc5cc5af
 
 /**
  * Created by JT on 1/7/18.
@@ -22,30 +21,6 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
     }
 
-<<<<<<< HEAD
-    public void nextButtonOnClick(View view){
-        //Get First Name
-        EditText FirstNameEditText = (EditText) findViewById(R.id.editFirstName);
-        String firstName = FirstNameEditText.getText().toString();
-
-        //Get Last Name
-        EditText LastNameEditText = (EditText) findViewById(R.id.editLastName);
-        String lastName = LastNameEditText.getText().toString();
-
-        //Get Match Number
-        //EditText MatchNumberEditText = (EditText) findViewById(R.id.editMatch);
-        //int matchNumber = Integer.valueOf(MatchNumberEditText.getText().toString());
-
-        //Get Team Number
-        //EditText TeamNumberEditText = (EditText) findViewById(R.id.editTeam);
-        //int teamNumber = Integer.valueOf((MatchNumberEditText.getText().toString()));
-
-        //
-
-        Intent intent = new Intent(MainActivity.this,ScoutScreen.class);
-
-        startActivity(intent);
-=======
     public void next(View view) {
         Intent intent = new Intent(MainActivity.this, ScoutScreen.class);
 
@@ -64,23 +39,31 @@ public class MainActivity extends AppCompatActivity{
                 if (!matchNumber.equals("")) { //Match number is entered
                     intent.putExtra("Match_Number", matchNumber);
 
-                    //Add Alliance if statement
+                    RadioGroup alliance = (RadioGroup) findViewById(R.id.allianceColor);
+                    int allianceColorID = alliance.getCheckedRadioButtonId();
+                    String allianceColor = radioButton(allianceColorID);
+                    if (!allianceColor.equals("")) { //Alliance color is selected
+                        intent.putExtra("Alliance_Color", allianceColor);
 
-                    EditText editTeam = (EditText) findViewById(R.id.editTeam);
-                    String teamNumber = editTeam.getText().toString();
-                    if (!teamNumber.equals("")) { //Team Scouted is entered
-                        intent.putExtra("Team_Number", teamNumber);
+                        EditText editTeam = (EditText) findViewById(R.id.editTeam);
+                        String teamNumber = editTeam.getText().toString();
+                        if (!teamNumber.equals("")) { //Team Scouted is entered
+                            intent.putExtra("Team_Number", teamNumber);
 
-                        //If match is a replay
-                        String replay = "";
-                        CheckBox replayBox = (CheckBox) findViewById(R.id.editReplay);
-                        replay += checkBox(replayBox, replay);
-                        intent.putExtra("Replay_Match", replay);
+                            //If match is a replay
+                            String replay = "";
+                            CheckBox replayBox = (CheckBox) findViewById(R.id.editReplay);
+                            replay += checkBox(replayBox, replay);
+                            intent.putExtra("Replay_Match", replay);
 
-                        startActivity(intent);
+                            startActivity(intent);
+                        } else {
+                            System.err.println("Team Number is not entered");
+                            Toast.makeText(getApplicationContext(), "Team Number is not entered", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        System.err.println("Team Number is not entered");
-                        Toast.makeText(getApplicationContext(), "Team Number is not entered", Toast.LENGTH_SHORT).show();
+                        System.err.println("Alliance Color is not selected");
+                        Toast.makeText(getApplicationContext(), "Alliance Color is not selected", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     System.err.println("Match Number is not entered");
@@ -94,6 +77,27 @@ public class MainActivity extends AppCompatActivity{
             System.err.println("First Name is not entered");
             Toast.makeText(getApplicationContext(), "First Name is not entered", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /*
+    Do not change, stays the same every year
+    Do not delete even if you do not end up using ir
+    Parameter: id tag of the radio button
+    Returns label of radio button
+    How to use:
+    RadioGroup floorFuelCollect = (RadioGroup) findViewById(R.id.floorFuelCollect);
+    int floorFuelCollectID = floorFuelCollect.getCheckedRadioButtonId();
+    String floorFuelCollectAbility = radioButton(floorFuelCollectID);
+    */
+    public String radioButton(int selectedRadioButtonID){
+        if (selectedRadioButtonID != -1){
+            RadioButton selectedRadioButton = (RadioButton) findViewById(selectedRadioButtonID);
+            String selectedRadioButtonText = selectedRadioButton.getText().toString(); //Radio button checked
+            return selectedRadioButtonText;
+        } else {
+            return "";
+        }
+
     }
 
     /*
@@ -118,6 +122,5 @@ public class MainActivity extends AppCompatActivity{
         } else {
             return "";
         }
->>>>>>> fab7f0ebdddedf68d8885b5561f0ee19cc5cc5af
     }
 }
