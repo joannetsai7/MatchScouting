@@ -20,27 +20,28 @@ import java.util.ArrayList;
 public class Data{
     private static ArrayList <String> short_data = new ArrayList<String>(); //Data without comments, names, etc
     private static ArrayList <String> full_data = new ArrayList<String>(); //All data
-    private static ArrayList <String> teams_list = new ArrayList<String>();
-    private static ArrayList <String> teams_done = new ArrayList<String>();
     private String shortFile = "DATA.txt"; //CHANGE TEXT FILE NAMES HERE
     private String fullFile = "FULL_DATA.txt";
     private String shortBackup = "BACKUP_DATA.txt";
     private String fullBackup = "FULL_BACKUP_DATA.txt";
     private String teams = "TEAMS.txt";
     private File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "MatchScouting/");
+    private File backupDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "MatchScouting/Backup/");
 
     public Data (){
         if(!dir.exists()){
             dir.mkdir();
+        }
+        if (!backupDir.exists()){
+            backupDir.mkdir();
         }
     }
 
     public void save(String shortOutput, String fullOutput){
         File mainFile = new File(dir, shortFile); //NUMBER DATA TEXT FILE
         File completeFile = new File(dir, fullFile); //COMPLETE DATA TEXT FILE
-        File backupFile = new File(dir, shortBackup); //NUMBER BACK UP DATA TEXT FILE
-        File completeBackupFile = new File(dir, fullBackup); //COMPLETE BACK UP DATA TEXT FILE
-
+        File backupFile = new File(backupDir, shortBackup); //NUMBER BACK UP DATA TEXT FILE
+        File completeBackupFile = new File(backupDir, fullBackup); //COMPLETE BACK UP DATA TEXT FILE
 
         /*
         IF ARRAY LIST IS EMPTY, CHECK IF THERE IS PREVIOUS DATA,
@@ -49,22 +50,13 @@ public class Data{
         if (short_data.size() == 0){
             if(mainFile.exists()){ //Load short data from main
                 loadContent(shortFile, short_data);
-            } else if (backupFile.exists()){ //Load short data from backup
-                loadContent(shortBackup, short_data);
             }
         }
         if (full_data.size() == 0){
             if(mainFile.exists()){ //Load all data from main
                 loadContent(fullFile, full_data);
-            } else if (backupFile.exists()){ //Load all data from backup
-                loadContent(fullBackup, full_data);
             }
         }
-
-        //Update finished teams list
-        int end = shortOutput.indexOf("\t"); //Get team from output string
-        String team = shortOutput.substring(0,end);
-        teams_done.add(team);
 
         //Add data to array
         short_data.add(shortOutput);

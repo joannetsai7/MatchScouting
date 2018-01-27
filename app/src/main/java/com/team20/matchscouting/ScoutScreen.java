@@ -303,6 +303,7 @@ public class ScoutScreen extends Activity{
 
                                     fullOutput += firstName + "/t" + lastName + "/t" + shortOutput;
                                     data.save(shortOutput, fullOutput);
+                                    finish();
                                 } else {
                                     System.err.println("Number of failed aided climb attempts is too high");
                                     Toast.makeText(getApplicationContext(), "Number of failed aided climb attempts is too high", Toast.LENGTH_SHORT).show();
@@ -333,6 +334,21 @@ public class ScoutScreen extends Activity{
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) { //Back Arrow pressed
+            String choice = data.getStringExtra("Choice");
+            if (choice.equals("leave")){
+                finish();
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivityForResult(new Intent(ScoutScreen.this,ExitPrompt.class), 6);
+    }
     /*
     Do not change, stays the same every year
     Do not delete even if you do not end up using ir
