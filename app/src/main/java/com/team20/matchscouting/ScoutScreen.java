@@ -109,7 +109,7 @@ public class ScoutScreen extends Activity{
         listDataHolder.add("Park");
         park.add("Successful");
         park.add("Failed");
-        park.add("Did not Attempt");
+        park.add("Did not Attempt/Climbed");
 
         listDataHolder.add("Climb");
         climb.add("Successful (was helped)");
@@ -226,7 +226,7 @@ public class ScoutScreen extends Activity{
         String shortOutput = "";
         String fullOutput = "";
 
-        shortOutput += alliance + "\t" + match + replay + "\t" + teamNumber;
+        shortOutput += match + replay + "\t" + alliance + "\t" + teamNumber;
 
         //Starting Position
         RadioGroup startPos = (RadioGroup) findViewById(R.id.startPosition);
@@ -293,17 +293,23 @@ public class ScoutScreen extends Activity{
                                 if (failNum < 3) {
                                     shortOutput += "\t" + failNum;
 
-                                    EditText editComments = (EditText) findViewById(R.id.commentText);
-                                    String comments = editComments.getText().toString();
-                                    if (comments.equals("")) {
-                                        shortOutput += "\t" + comments;
-                                    } else {
-                                        shortOutput += "\tN/A";
-                                    }
+                                    if (successNum+failNum>3) { //Cant have more than 2 fail and success aided climb together
 
-                                    fullOutput += firstName + "/t" + lastName + "/t" + shortOutput;
-                                    data.save(shortOutput, fullOutput);
-                                    finish();
+                                        EditText editComments = (EditText) findViewById(R.id.commentText);
+                                        String comments = editComments.getText().toString();
+                                        if (comments.equals("")) {
+                                            shortOutput += "\t" + comments;
+                                        } else {
+                                            shortOutput += "\tN/A";
+                                        }
+
+                                        fullOutput += firstName + "\t" + lastName + "\t" + shortOutput;
+                                        data.save(shortOutput, fullOutput);
+                                        finish();
+                                    } else {
+                                        System.err.println("Number of failed and successful aided climb attempts together is too high");
+                                        Toast.makeText(getApplicationContext(), "Number of failed and successful aided climb attempts together is too high", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
                                     System.err.println("Number of failed aided climb attempts is too high");
                                     Toast.makeText(getApplicationContext(), "Number of failed aided climb attempts is too high", Toast.LENGTH_SHORT).show();

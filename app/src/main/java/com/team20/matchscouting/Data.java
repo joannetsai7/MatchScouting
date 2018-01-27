@@ -24,7 +24,6 @@ public class Data{
     private String fullFile = "FULL_DATA.txt";
     private String shortBackup = "BACKUP_DATA.txt";
     private String fullBackup = "FULL_BACKUP_DATA.txt";
-    private String teams = "TEAMS.txt";
     private File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "MatchScouting/");
     private File backupDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "MatchScouting/Backup/");
 
@@ -56,6 +55,12 @@ public class Data{
             if(mainFile.exists()){ //Load all data from main
                 loadContent(fullFile, full_data);
             }
+        }
+
+        //If data was backed up and deleted, clear array of data
+        if (!mainFile.exists() && !completeFile.exists()){
+            short_data.clear();
+            full_data.clear();
         }
 
         //Add data to array
