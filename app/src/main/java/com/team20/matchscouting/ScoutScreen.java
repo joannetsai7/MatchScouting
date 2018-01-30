@@ -343,17 +343,22 @@ public class ScoutScreen extends Activity{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) { //Back Arrow pressed
-            String choice = data.getStringExtra("Choice");
-            if (choice.equals("leave")){
-                finish();
+        switch(requestCode) {
+            case (1): {
+                if (resultCode == Activity.RESULT_OK) { //Back Arrow pressed
+                    String choice = data.getStringExtra("Choice");
+                    if (choice.equals("leave")) {
+                        finish();
+                    }
+                }
+                break;
             }
         }
     }
 
     @Override
     public void onBackPressed() {
-        startActivityForResult(new Intent(ScoutScreen.this,ExitPrompt.class), 6);
+        startActivityForResult(new Intent(ScoutScreen.this,ExitPrompt.class),1);
     }
     /*
     Do not change, stays the same every year
