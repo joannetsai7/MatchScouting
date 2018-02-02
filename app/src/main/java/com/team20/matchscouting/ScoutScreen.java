@@ -235,6 +235,14 @@ public class ScoutScreen extends Activity{
         if (!startPosition.equals("")) {
             shortOutput += "\t" + startPosition;
 
+            //Pick up cubes from pyramid
+            String pyramid = ((TextView) findViewById(R.id.pyramid)).getText().toString();
+            shortOutput += "\t" + pyramid;
+
+            //Pick up cubes from behindSwitch
+            String behindSwitch = ((TextView) findViewById(R.id.behindSwitch)).getText().toString();
+            shortOutput += "\t" + behindSwitch;
+
             //Cross Auto Line
             String crossAuto = "";
             CheckBox autoLine = (CheckBox) findViewById(R.id.autoLine);
