@@ -230,7 +230,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Placed Cube(s) on wrong side of Switch/Scale"
+            android:text="Placed cube(s) on wrong side of Switch/Scale"
             android:textSize="35dp"
             android:id="@+id/wrongSide"/>
         
